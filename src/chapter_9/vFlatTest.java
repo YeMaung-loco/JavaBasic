@@ -1,36 +1,49 @@
 package chapter_9;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class vFlatTest {
+
 	public static void main(String[] args) {
-	List<Integer> list = new ArrayList<>();
-	@SuppressWarnings("resource")
-	Scanner scanner = new Scanner(System.in); 
-	int num;
-	boolean notComplete = true;
-	 
-	 while (notComplete) { 
-		 if (list.size() != 5) { 
-		 System.out.print("Enter Number: "); 
-		 num = scanner.nextInt(); 
-		 if (list.contains(num)) { 
-			 System.out.println("Duplicate");
-		 } 
-		 else {
-			 list.add(num);
-			 if( list.size() == 5) 
-				 notComplete = false;
 
-		 	}
+		Employeetest1 e[] = new Employeetest1[5];
+		Employeetest1 inputE = new Employeetest1();
 
-	 	}
+		for (int i = 0; i < e.length; i++) {
 
+			e[i] = new Employeetest1(inputE.getNumDays(i + 1));
+		}
+
+		for (int j = 0; j < e.length; j++) {
+
+			e[j].displayWeeklyPay(j + 1);
+		}
+	}
+}
+
+class Employeetest1 {
+	final int rateOfPay = 250;
+	int numberOfDays;
+	Scanner scan = new Scanner(System.in);
+
+	public Employeetest1() {
 	}
 
-	System.out.println(list);
+	public Employeetest1(int d) {
+		this.numberOfDays = d;
+	}
+
+	public int getNumDays(int i) {
+		System.out.println("Enter Number of Days for employee no." + i);
+		return scan.nextInt();
+	}
+
+	public int calculateWeeklyPay() {
+		return this.numberOfDays * this.rateOfPay;
+	}
+
+	public void displayWeeklyPay(int j) {
+		System.out.println("Weekly Salary for Employee no." + j + " " + calculateWeeklyPay());
 
 	}
 

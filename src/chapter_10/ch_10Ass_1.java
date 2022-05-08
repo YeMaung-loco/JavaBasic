@@ -15,13 +15,17 @@ public class ch_10Ass_1 {
 				credit = '\u0000';
 				int k = i + 1;
 
-				if (Name == null) {
+				while (Name == null || Name == "") {
 					System.out.println("Enter Student Name for Employee no." + k + " - ");
 					Name = scan.nextLine();
 				}
-				if (credit == '\u0000') {
+				while (credit == '\u0000' || credit == ' ' || credit == '\0' || credit == '\n'
+						|| Character.isWhitespace(credit)) {
 					System.out.println("Enter credit for Employee no." + k + " - ");
 					credit = (char) System.in.read();
+
+					if (Character.isWhitespace(credit))
+						scan.nextLine();
 				}
 
 				gStudent[i] = new GraduateStudent(k, Name, credit);
@@ -57,7 +61,7 @@ class Student {
 
 class GraduateStudent extends Student {
 	char credit;
-	Scanner scan =new Scanner(System.in);
+	Scanner scan = new Scanner(System.in);
 
 	public GraduateStudent() {
 
@@ -69,28 +73,11 @@ class GraduateStudent extends Student {
 		super(no, name);
 		this.credit = credit;
 	}
-	
-	public void inputData(int j, GraduateStudent gStudent) throws IOException {
-		String Name = null;
-		credit = '\u0000';
-
-		if (Name == null) {
-			System.out.println("Enter Student Name for Employee no." + j + " - ");
-			Name = scan.nextLine();
-		}
-		if (credit == '\u0000') {
-			System.out.println("Enter credit for Employee no." + j + " - ");
-			credit = (char) System.in.read();
-		}
-			
-		gStudent = new GraduateStudent(j, Name, credit);
-
-		scan.nextLine();
-	}
 
 	public void display() {
 
-		System.out.println("Student No - " + this.StudentNo + "\nName       - " + this.name + "\nCredit     - " + this.credit);
+		System.out.println(
+				"Student No - " + this.StudentNo + "\nName       - " + this.name + "\nCredit     - " + this.credit);
 		System.out.println("----------------");
 	}
 

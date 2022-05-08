@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class EmployeePayApp {
 
-	public static void main(String[] args) { // TODO Auto-generated method stub
+	public static void main(String[] args) {
 		Employeetest e[] = new Employeetest[5];
 		Employeetest inputE = new Employeetest();
 
@@ -16,11 +16,9 @@ public class EmployeePayApp {
 		for (int j = 0; j < e.length; j++) {
 			e[j].displayWeeklyPay(j + 1);
 		}
-
 	}
-
 }
-///Test Github change
+
 class Employeetest {
 	final int rateOfPay = 250;
 	int numberOfDays;
