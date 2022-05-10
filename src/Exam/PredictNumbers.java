@@ -25,7 +25,6 @@ public class PredictNumbers {
 		int max = 9, min = 1, n;
 
 		while (index < Array.length) {
-			// System.out.println("Enter number: ");
 			n = (int) (Math.random() * (max - min)) + min;
 			for (int j = 0; j < Array.length; j++) {
 				if (Array[j] == n) {
@@ -36,13 +35,11 @@ public class PredictNumbers {
 				Array[index] = n;
 				index++;
 			}
-
-			else {
-				// System.out.println(n + " already exit");
+			else 
 				found = false;
-			}
+			
 		}
-		System.out.println("computer -" + Arrays.toString(Array));
+		System.out.println("Computer -" + Arrays.toString(Array));
 
 		return Array;
 
@@ -52,26 +49,26 @@ public class PredictNumbers {
 		boolean found = false;
 		int[] Array = new int[4];
 		int index = 0;
-		Scanner scan = new Scanner(System.in);
-		while (index < Array.length) {
-			System.out.println("Enter number: ");
-			int n = scan.nextInt();
-			for (int j = 0; j < Array.length; j++) {
-				if (Array[j] == n) {
-					found = true;
+		try (Scanner scan = new Scanner(System.in)) {
+			while (index < Array.length) {
+				System.out.println("Enter number: ");
+				int n = scan.nextInt();
+				for (int j = 0; j < Array.length; j++) {
+					if (Array[j] == n) {
+						found = true;
+					}
+				}
+				if (!found && n >= 1 && n <= 9) {
+					Array[index] = n;
+					index++;
+				}
+
+				else {
+					System.out.println(n + " Enter a valid number-");
+					found = false;
 				}
 			}
-			if (!found && n >= 1 && n <= 9) {
-				Array[index] = n;
-				index++;
-			}
-
-			else {
-				System.out.println(n + " Enter a valid number-");
-				found = false;
-			}
 		}
-
 		System.out.println("Player -" + Arrays.toString(Array));
 
 		return Array;
@@ -91,9 +88,7 @@ public class PredictNumbers {
 					} else {
 						B++;
 					}
-
 				}
-
 			}
 		}
 		if (H == 4) {
