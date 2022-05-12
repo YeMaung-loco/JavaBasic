@@ -1,25 +1,28 @@
 package chapter_9;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Array_Duplicate {
 	public static void main(String[] args) {
-		List<Integer> list = new ArrayList<>();
-		Scanner scanner = new Scanner(System.in);
-		int num;
-		boolean notComplete = true;
-		while (notComplete) {
-			if (list.size() != 5) {
-				System.out.print("Enter Number: ");
-				num = scanner.nextInt();
-				if (list.contains(num)) {
-					System.out.println("Duplicate");
-				} else {
-					list.add(num);
-					if( list.size() == 5) notComplete = false;
-					
+		Vector<Integer> list = new Vector<Integer>();
+		try (Scanner scanner = new Scanner(System.in)) {
+			int num;
+			boolean notComplete = true;
+			Random randomObj = new Random();
+			while (notComplete) {
+				if (list.size() != 4) {
+					System.out.print("Random Number: ");
+					num = randomObj.nextInt(5) + 1;
+					System.out.println(num);
+					if (list.contains(num)) {
+						System.out.println("Duplicate");
+					} else {
+						list.addElement(num);
+						if (list.size() == 4)
+							notComplete = false;
+					}
 				}
 			}
 		}

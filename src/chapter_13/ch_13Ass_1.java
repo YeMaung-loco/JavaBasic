@@ -16,7 +16,6 @@ public class ch_13Ass_1 {
 		System.out.println(Character.isLetter(a) ? "\'" + a + "\' is Letter" : "\'" + a + "\' is Digit");
 
 		//////// next part of assignment//////
-
 		StringBuffer str = new StringBuffer("This is a  program");
 		System.out.println(str.insert(10, "Java"));
 
