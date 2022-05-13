@@ -22,10 +22,11 @@ public class PredictNumbersVector {
 				System.out.println("Game Over !!!");
 				System.out.println("Start a new game?  y/n-");
 				char game = (char) System.in.read();
-				scanner.nextLine(); ///this line is nessary
+				scanner.nextLine(); /// this line is necessary
 				if (game == 'y') {
 					System.out.println("Start a new game!!!");
 					Computer = computer();
+					playTime = 0;
 				} else
 					return;
 			}
