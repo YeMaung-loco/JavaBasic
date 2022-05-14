@@ -32,6 +32,7 @@ public class Play {
 				}
 			}
 		}
+		display("Start a new game!!!");
 		display("-----------\nComputer- " + computer_list);
 	}
 
@@ -42,7 +43,7 @@ public class Play {
 		Scanner scanner = new Scanner(System.in);
 		while (notComplete) {
 			display("Enter Numbers: ");
-			String numString = scanner.nextLine();
+			String numString = scanner.next();
 
 			if (numString.length() >= 4) {
 				cutString = numString.substring(0, 4);
