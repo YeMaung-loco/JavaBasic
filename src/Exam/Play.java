@@ -23,13 +23,11 @@ public class Play {
 		boolean notComplete = true;
 		Random randomObj = new Random();
 		while (notComplete) {
-			if (computer_list.size() != 4) {
-				num = randomObj.nextInt(9) + 1;
-				if (!computer_list.contains(num)) {
-					computer_list.addElement(num);
-					if (computer_list.size() == 4)
-						notComplete = false;
-				}
+			num = randomObj.nextInt(9) + 1;
+			if (!computer_list.contains(num)) {
+				computer_list.addElement(num);
+				if (computer_list.size() == 4)
+					notComplete = false;
 			}
 		}
 		display("Start a new game!!!");
@@ -38,31 +36,34 @@ public class Play {
 
 	public static void play() {
 		int num;
-		String cutString = null;
 		boolean notComplete = true;
 		Scanner scanner = new Scanner(System.in);
 		while (notComplete) {
 			display("Enter Numbers: ");
 			String numString = scanner.next();
-
 			if (numString.length() >= 4) {
-				cutString = numString.substring(0, 4);
-				for (int i = 0; i < cutString.length(); i++) {
-					num = Character.getNumericValue(cutString.charAt(i));
-					if (player_list.contains(num)) {
-						display("Duplicate!!!");
-						player_list.removeAllElements();
-						break;
-					} else {
-						player_list.addElement(num);
-						if (player_list.size() == 4) {
-							notComplete = false;
+				for (int i = 0; i < 4; i++) {
+					String n = Character.toString(numString.charAt(i));
+					try {
+						num = Integer.parseInt(n);
+						if (player_list.contains(num)) {
+							display("Duplicate!!!");
+							player_list.removeAllElements();
+							break;
+						} else {
+							player_list.addElement(num);
+							if (player_list.size() == 4) {
+								notComplete = false;
+							}
 						}
+					} catch (NumberFormatException e) {
+						player_list.removeAllElements();
+						System.out.println("Please input Number format!!!");
+						break;
 					}
 				}
-			} else {
+			} else
 				display("Please input aleast 4 numbers!!!");
-			}
 		}
 		display("Player- " + player_list);
 	}
@@ -91,7 +92,7 @@ public class Play {
 	}
 
 	public static void display(String print) {
-			System.out.println(print);	
+		System.out.println(print);
 	}
 
 }

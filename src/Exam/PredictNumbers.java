@@ -1,11 +1,9 @@
 package Exam;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class PredictNumbers {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 
 		new Play();
@@ -16,12 +14,12 @@ public class PredictNumbers {
 			if (Play.playTime == 10) {
 				Play.computer_list.removeAllElements();
 				Play.display("Game Over !!! \nStart a new game?  y/n-");
-				char game = (char) System.in.read();
-				if (game == 'y') {
+				char newGame = (char) System.in.read();
+				if (newGame == 'y') {
 					Play.playTime = 0;
 					Play.computer();
-					
 					Play.display("*********** \nYou have " + (10 - Play.playTime) + " chances!!!");
+					
 				} else
 					return;
 			}
@@ -31,7 +29,5 @@ public class PredictNumbers {
 		}
 
 	}
-
-	
 
 }
