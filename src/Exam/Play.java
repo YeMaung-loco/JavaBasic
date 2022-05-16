@@ -20,28 +20,24 @@ public class Play {
 
 	public static void computer() {
 		int num;
-		boolean notComplete = true;
 		Random randomObj = new Random();
-		while (notComplete) {
+		while (computer_list.size() < 4) {
 			num = randomObj.nextInt(9) + 1;
 			if (!computer_list.contains(num)) {
 				computer_list.addElement(num);
-				if (computer_list.size() == 4)
-					notComplete = false;
+
 			}
 		}
 		display("Start a new game!!!");
 		display("-----------\nComputer- " + computer_list);
 	}
 
-	public static void play() {
+	public static void play(Scanner scanner) {
 		int num;
-		boolean notComplete = true;
-		Scanner scanner = new Scanner(System.in);
-		while (notComplete) {
-			display("Enter Numbers: ");
-			String numString = scanner.next();
-			if (numString.length() >= 4) {
+		while (player_list.size() < 4) {
+			display("Enter Numbers- ");
+			String numString = scanner.nextLine();
+			if (numString.length() >= 4 && !numString.contains(" ")) {
 				for (int i = 0; i < 4; i++) {
 					String n = Character.toString(numString.charAt(i));
 					try {
@@ -52,18 +48,17 @@ public class Play {
 							break;
 						} else {
 							player_list.addElement(num);
-							if (player_list.size() == 4) {
-								notComplete = false;
-							}
 						}
 					} catch (NumberFormatException e) {
 						player_list.removeAllElements();
-						System.out.println("Please input Number format!!!");
+						display("Please input Number format!!!");
 						break;
 					}
 				}
-			} else
-				display("Please input aleast 4 numbers!!!");
+			} else {
+				display("Please input aleast 4 numbers with no space!!!");
+
+			}
 		}
 		display("Player- " + player_list);
 	}
