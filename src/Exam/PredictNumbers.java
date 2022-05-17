@@ -7,21 +7,21 @@ public class PredictNumbers {
 
 	public static void main(String[] args) throws IOException {
 
-		new Play();
-		Play.computer();
+		Play play = new Play();
+		play.computer();
 		Scanner sc = null;
-		while (Play.notOver) {
+		while (play.notOver) {
 			sc = new Scanner(System.in);
-			Play.display("*********** \nYou have " + (10 - Play.playTime) + " chances!!!");
-			if (Play.playTime == 10) {
-				Play.computer_list.removeAllElements();
-				Play.display("Game Over !!! \nStart a new game?  y/n-");
+			play.display("*********** \nYou have " + (10 - play.playTime) + " chances!!!");
+			if (play.playTime == 10) {
+				play.computer_list.removeAllElements();
+				play.display("Game Over !!! \nStart a new game?  y/n-");
 				char newGame = (char) System.in.read();
-				sc.nextLine(); 
+				sc.nextLine();
 				if (newGame == 'y') {
-					Play.playTime = 0;
-					Play.computer();
-					Play.display("*********** \nYou have " + (10 - Play.playTime) + " chances!!!");
+					play.playTime = 0;
+					play.computer();
+					play.display("*********** \nYou have " + (10 - play.playTime) + " chances!!!");
 
 				} else {
 					sc.close();
@@ -30,8 +30,8 @@ public class PredictNumbers {
 
 			}
 
-			Play.play(sc);
-			Play.check(Play.computer_list, Play.player_list);
+			play.play(sc);
+			play.check(play.computer_list, play.player_list);
 		}
 		sc.close();
 

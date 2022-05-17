@@ -5,11 +5,10 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Play {
-
-	static Vector<Integer> computer_list;
-	static Vector<Integer> player_list;
-	static boolean notOver;
-	static int playTime;
+	Vector<Integer> computer_list;
+	Vector<Integer> player_list;
+	boolean notOver;
+	int playTime;
 
 	Play() {
 		playTime = 0;
@@ -18,9 +17,9 @@ public class Play {
 		player_list = new Vector<Integer>();
 	}
 
-	public static void computer() {
+	public void computer() {
 		int num;
-		Random randomObj= new Random();
+		Random randomObj = new Random();
 		while (computer_list.size() < 4) {
 			num = randomObj.nextInt(9) + 1;
 			if (!computer_list.contains(num)) {
@@ -32,12 +31,12 @@ public class Play {
 		display("-----------\nComputer- " + computer_list);
 	}
 
-	public static void play(Scanner scanner) {
+	public void play(Scanner scanner) {
 		int num;
 		while (player_list.size() < 4) {
 			display("Enter Numbers- ");
 			String numString = scanner.nextLine();
-			if (numString.length() >= 4 && !numString.contains(" ")) {
+			if (numString.length() == 4 && !numString.contains(" ")) {
 				for (int i = 0; i < 4; i++) {
 					String n = Character.toString(numString.charAt(i));
 					try {
@@ -56,14 +55,30 @@ public class Play {
 					}
 				}
 			} else {
-				display("Please input aleast 4 numbers with no space!!!");
+				if (numString.length() > 4 || numString.length() < 4 || numString.contains(" ")) {
+
+					if (numString.contains(" ")) {
+						if (numString.length() == 5)
+							display("Dont use space!!!");
+						else
+							display("Require 4number without space!!!");
+
+					}
+
+					else {
+						if (numString.length() < 4)
+							display("Please input 4 numbers!!!");
+						else
+							display("Please input 4 numbers!!!");
+					}
+				}
 
 			}
 		}
 		display("Player- " + player_list);
 	}
 
-	public static void check(Vector<Integer> computer, Vector<Integer> player) {
+	public void check(Vector<Integer> computer, Vector<Integer> player) {
 		int h = 0, b = 0;
 		for (int i = 0; i < computer.size(); i++) {
 			for (int j = 0; j < player.size(); j++) {
@@ -86,7 +101,7 @@ public class Play {
 		playTime++;
 	}
 
-	public static void display(String print) {
+	public void display(String print) {
 		System.out.println(print);
 	}
 
