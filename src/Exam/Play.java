@@ -35,8 +35,8 @@ public class Play {
 		int num;
 		while (player_list.size() < 4) {
 			display("Enter Numbers- ");
-			String numString = scanner.nextLine();
-			if (numString.length() == 4 && !numString.contains(" ")) {
+			String numString;
+			if ((numString= scanner.nextLine()).length() == 4 && !numString.contains(" ")) {
 				for (int i = 0; i < 4; i++) {
 					String n = Character.toString(numString.charAt(i));
 					try {
