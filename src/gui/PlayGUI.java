@@ -1,23 +1,26 @@
-package Exam;
+package gui;
 
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class Play {
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class PlayGUI extends JFrame {
 	Vector<Integer> computer_list;
 	Vector<Integer> player_list;
 	boolean notOver;
 	int playTime;
 
-	Play() {
+	PlayGUI() {
 		playTime = 0;
 		notOver = true;
 		computer_list = new Vector<Integer>();
 		player_list = new Vector<Integer>();
 	}
 
-	public void computer() {
+	public Vector<Integer> computer() {
 		int num;
 		Random randomObj = new Random();
 		while (computer_list.size() < 4) {
@@ -29,13 +32,15 @@ public class Play {
 		}
 		display("Start a new game!!!");
 		display("-----------\nComputer- " + computer_list);
+		return computer_list;
 	}
 
-	public void play(String numString) {
+	public Vector<Integer> play(String numString) {
 		int num;
 		while (player_list.size() < 4) {
+
 			display("Enter Numbers- ");
-			//String numString;
+
 			if (numString.length() == 4 && !numString.contains(" ")) {
 				for (int i = 0; i < 4; i++) {
 					String n = Character.toString(numString.charAt(i));
@@ -50,6 +55,7 @@ public class Play {
 						}
 					} catch (NumberFormatException e) {
 						player_list.removeAllElements();
+						 JOptionPane.showMessageDialog(this, "Please input Number format!!!");
 						display("Please input Number format!!!");
 						break;
 					}
@@ -58,9 +64,10 @@ public class Play {
 				if (numString.length() > 4 || numString.length() < 4 || numString.contains(" ")) {
 
 					if (numString.contains(" ")) {
-						if (numString.length() == 5)
+						if (numString.length() == 5) {
+							JOptionPane.showMessageDialog(this, "Dont use Space");
 							display("Dont use space!!!");
-						else
+						} else
 							display("Require 4number without space!!!");
 
 					}
@@ -76,11 +83,12 @@ public class Play {
 			}
 		}
 		display("Player- " + player_list);
-		//return player_list;
+		return player_list;
 	}
 
-	public void check(Vector<Integer> computer, Vector<Integer> player) {
+	public String check(Vector<Integer> computer, Vector<Integer> player) {
 		int h = 0, b = 0;
+		String msg = null;
 		for (int i = 0; i < computer.size(); i++) {
 			for (int j = 0; j < player.size(); j++) {
 				if (computer.get(i) == player.get(j)) {
@@ -93,13 +101,18 @@ public class Play {
 			}
 		}
 		if (h == 4) {
-			display("You Win!!!!\nResult- " + h + "H" + b + "B");
+			msg = "4H0B";
+			// msg="You Win!!!!\nResult- " + h + "H" + b + "B";
+			display(msg);
 			notOver = false;
 		} else {
-			display("Try again!!!\nResult- " + h + "H" + b + "B");
+			msg = h + "H" + b + "B";
+			// msg="Try again!!!\nResult- " + h + "H" + b + "B";
+			display(msg);
 			player.removeAllElements();
 		}
 		playTime++;
+		return msg;
 	}
 
 	public void display(String print) {

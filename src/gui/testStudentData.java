@@ -25,6 +25,7 @@ public class testStudentData extends JFrame implements ActionListener {
 		setProperties();
 		addComponents();
 		addListener();
+		setMnemonic();
 	}
 
 	private void initComponents() {
@@ -44,7 +45,10 @@ public class testStudentData extends JFrame implements ActionListener {
 	}
 
 	private void setProperties() {
-		setBounds(100, 100, 255, 340);
+
+		int txtLength = 125;
+
+		setBounds(100, 100, 265, 340);
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,9 +72,9 @@ public class testStudentData extends JFrame implements ActionListener {
 		lblPhone.setText("Phone");
 		lblPhone.setBounds(10, 80, 100, 25);
 
-		txtName.setBounds(120, 20, 120, 25);
-		txtAddress.setBounds(120, 50, 120, 25);
-		txtPhone.setBounds(120, 80, 120, 25);
+		txtName.setBounds(120, 20, txtLength, 25);
+		txtAddress.setBounds(120, 50, txtLength, 25);
+		txtPhone.setBounds(120, 80, txtLength, 25);
 
 		btnSave.setText("Save");
 		btnSave.setBounds(5, 110, 70, 25);
@@ -103,6 +107,10 @@ public class testStudentData extends JFrame implements ActionListener {
 		btnSave.addActionListener(this);
 		btnShow.addActionListener(this);
 		btnClose.addActionListener(this);
+	}
+
+	private void setMnemonic() {
+		btnClose.setMnemonic('C');
 	}
 
 	@Override

@@ -10,6 +10,7 @@ public class TestJFrame extends JFrame {
 	}
 
 	public TestJFrame() {
+		getContentPane().setLayout(null);
 		initComponents();
 		asignProperties();
 		addComponents();

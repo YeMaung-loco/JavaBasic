@@ -1,13 +1,13 @@
-package Exam;
+package gui;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class PredictNumbers {
+public class PredictGUI {
 
 	public static void main(String[] args) throws IOException {
 
-		Play play = new Play();
+		PlayGUI play = new PlayGUI();
 		play.computer();
 		Scanner sc = null;
 		while (play.notOver) {
