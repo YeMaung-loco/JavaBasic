@@ -26,7 +26,7 @@ class Model_Computer {
 		System.out.println("The numbers is "+computer_list);
 	}
 
-	public Vector<Integer> getM_Computer() {
+	public Vector<Integer> getMcomputer() {
 
 		return computer_list;
 
