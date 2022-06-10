@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class newGame {
+ class newGame {
 
 	JFrame frame;
 	JTextField txtNumber;
